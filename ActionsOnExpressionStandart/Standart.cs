@@ -7,7 +7,6 @@ namespace ActionsOnExpressionStandart
 {
     public class Standart
     {
-        //public string Result { get; private set; }
 
         public Standart(StringBuilder stringBuilder,string operation,out string result)
         {

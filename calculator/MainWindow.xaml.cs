@@ -31,6 +31,8 @@ namespace calculator
         {
             InitializeComponent();           
         }
+        private bool comm { get; set; }
+        private bool oper { get; set; }
         private string Number = "";
         internal string number
         {
@@ -41,8 +43,20 @@ namespace calculator
             }
             set
             {
-                Number = value;
-                expressionTextBox.Text += Number;
+                if (oper == true && value == "*" || value == "/" || value == "-" || value == "+") value = ""; 
+                if (value == "*" || value == "/" || value == "-" || value == "+") oper = true;
+                switch (value)
+                {
+                    case "," when comm == true: value = ""; break;
+                    case "," when comm == false: comm = true; goto default;
+                    case "*" when oper == true: comm = false; goto default;
+                    case "/" when oper == true: comm = false; goto default;
+                    case "-" when oper == true: comm = false; goto default;
+                    case "+" when oper == true: comm = false;goto default;
+                    case "←": expressionTextBox.Text = expressionTextBox.Text.Remove(expressionTextBox.Text.Length - 1); break;
+                    case "CE": expressionTextBox.Text = ""; break;
+                    default: Number = value; expressionTextBox.Text += Number; break;
+                }
             }
         }
 
@@ -55,18 +69,18 @@ namespace calculator
             }
             set
             {
-                Operation = value;
-                
+                oper = false;
+                Operation = value;               
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            number = ((Button)sender).Content.ToString();
+            number = ((Button)sender).Content.ToString()!;
         }
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            operation = ((Button)sender).Content.ToString();
+            operation = ((Button)sender).Content.ToString()!;
 
 
             Standart standart = new Standart(new StringBuilder(expressionTextBox.Text), Operation, out string result);

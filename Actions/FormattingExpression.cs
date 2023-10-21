@@ -20,6 +20,8 @@ namespace Actions
             {
                 expression.Replace(IOperation.FirstNumber.ToString(), "", 0, IOperation.FirstNumber.ToString().Length);
             }
+            else
+                IOperation.FirstNumber = "0";
 
             foreach (var i in IOperation.Operators) { expression.Replace(i.ToString(), "", 0, 1); }
 
@@ -28,31 +30,9 @@ namespace Actions
             {
                 expression.Replace(IOperation.SecondNumber.ToString(), "", 0, IOperation.SecondNumber.ToString().Length);
             }
+            else
+                IOperation.SecondNumber = "0";
 
-            //вот это плохо
-            Regex regex = new Regex(@"\,(\D?)");
-            if (IOperation.FirstNumber.Where(x => Regex.IsMatch(x.ToString(), regex.ToString(), RegexOptions.Multiline)).Count() > 1)
-            {
-                int comma = 0;
-                for (int i = 0; i < IOperation.FirstNumber.Length; i++)
-                {
-                    if (IOperation.FirstNumber[i] == ',')
-                        comma++;
-                    if (comma > 1)
-                        IOperation.FirstNumber = IOperation.FirstNumber.Remove(i, 1);
-                }
-            }
-            if (IOperation.SecondNumber.Where(x => Regex.IsMatch(x.ToString(), regex.ToString(), RegexOptions.Compiled)).Count() > 1)
-            {
-                int comma = 0;
-                for (int i = 0; i < IOperation.SecondNumber.Length; i++)
-                {
-                    if (IOperation.SecondNumber[i] == ',')
-                        comma++;
-                    if (comma > 1)
-                        IOperation.SecondNumber = IOperation.SecondNumber.Remove(i, 1);
-                }
-            }
             ArithmeticOperation arithmetic = new ArithmeticOperation();
         }
         /*
