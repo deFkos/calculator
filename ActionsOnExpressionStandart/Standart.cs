@@ -11,14 +11,7 @@ namespace ActionsOnExpressionStandart
 
         public Standart(StringBuilder stringBuilder,string operation,out string result)
         {
-             switch(operation)
-             {
-                case "-": FormattingExpression frmExp = new FormattingExpression(stringBuilder); break;
-                case "+/-": frmExp = new FormattingExpression(stringBuilder); break;
-                case "ce": frmExp = new FormattingExpression(stringBuilder); break;
-                case "c": frmExp = new FormattingExpression(stringBuilder); break;
-                case "equlityButton": frmExp = new FormattingExpression(stringBuilder); break;
-            }
+            FormattingExpression frmExp = new FormattingExpression(stringBuilder);
             result = IOperation.result!;
             // [05/0 = 1]
         }
