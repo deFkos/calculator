@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace Actions
 {
-    public class ArithmeticOperation : IOperation
+    internal class ArithmeticOperation : IOperation
     {
         public List<string> historyOper = new List<string>();
 
