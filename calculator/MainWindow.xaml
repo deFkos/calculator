@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="383" Width="311" Background="SeaGreen">
-    <Grid Margin="0,20,0,-6" HorizontalAlignment="Center" Width="311">
+        Title="MainWindow" Height="326" Width="277" Background="SeaGreen">
+    <Grid Margin="3,19,0,1" HorizontalAlignment="Left" Width="273">
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
             <RowDefinition Height="344*"/>
@@ -15,7 +15,7 @@
             <ColumnDefinition Width="155"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Canvas Margin="30,60,30,0" Height="227" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1">
+        <Canvas Margin="12,0,0,0" Height="218" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left" Width="242">
             <Button x:Name="arrowButton" Click="Button_Click" Content="←"  Style="{StaticResource MoreButton}" FontSize="12" Width="40" Height="40"  RenderTransformOrigin="0.235,0.48" Canvas.Left="2" Canvas.Top="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Button x:Name="sevenButton" Click="Button_Click" Content="7" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="45" RenderTransformOrigin="0.613,0.434" Canvas.Left="1"/>
             <Button x:Name="eightButton" Click="Button_Click" Content="8" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="44" Canvas.Top="45"/>
@@ -35,8 +35,8 @@
             <Button x:Name="multiplyButton" Click="Button_Click" Content="*" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="88"/>
             <Button x:Name="minusButton" Click="Button_Click" Content="-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.548,0.549" VerticalAlignment="Center" HorizontalAlignment="Left" Canvas.Left="135" Canvas.Top="132"/>
             <Button x:Name="plusButton" Click="Button_Click" Content="+" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.545" Canvas.Left="136" Canvas.Top="176"/>
-            <TextBox x:Name="expressionTextBox" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Width="282" Height="25" VerticalAlignment="Top" Canvas.Left="-16" Canvas.Top="-34"/>
-            <Button x:Name="equlityButton" Click="Button_Click1" Content="=" Background="#a0da66" Style="{StaticResource MoreButton}" Width="64" Height="75" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Top" HorizontalAlignment="Center" Canvas.Left="179" Canvas.Top="143"/>
+            <TextBox x:Name="expressionTextBox" TextWrapping="Wrap" Text=""  HorizontalAlignment="Center" Width="208" Height="20" VerticalAlignment="Top" Canvas.Top="-26"/>
+            <Button x:Name="equlityButton" Click="Button_Click1" Content="=" Background="#a0da66" Style="{StaticResource MoreButton}" Width="64" Height="213" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Top" HorizontalAlignment="Center" Canvas.Left="179" Canvas.Top="5"/>
         </Canvas>
     </Grid>
 </Window>

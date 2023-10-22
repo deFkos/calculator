@@ -44,7 +44,7 @@ namespace calculator
             set
             {
                 //unicode is better
-                if (oper == true && value == "*" || value == "/" || value == "-" || value == "+") value = "";
+                if (oper == true && (value == "*" || value == "/" || value == "-" || value == "+")) value = "";
                 if (value == "*" || value == "/" || value == "-" || value == "+") oper = true;
 
                 switch (value)
@@ -54,8 +54,13 @@ namespace calculator
                     case "*" when oper == true: comm = false; goto default;
                     case "/" when oper == true: comm = false; goto default;
                     case "-" when oper == true: comm = false; goto default;
-                    case "+" when oper == true: comm = false;goto default;
-                    case "←" when expressionTextBox.Text.Last() == '*' || expressionTextBox.Text.Last() == '/' || expressionTextBox.Text.Last() == '-' || expressionTextBox.Text.Last() == '+': oper = false; expressionTextBox.Text = expressionTextBox.Text.Remove(expressionTextBox.Text.Length - 1); break;
+                    case "+" when oper == true: comm = false; goto default;
+                    case "←" when 
+                    expressionTextBox.Text.Last() == '*' ||
+                    expressionTextBox.Text.Last() == '/' ||
+                    expressionTextBox.Text.Last() == '-' ||
+                    expressionTextBox.Text.Last() == '+'
+                    : oper = false; expressionTextBox.Text = expressionTextBox.Text.Remove(expressionTextBox.Text.Length - 1); break;
                     case "←": expressionTextBox.Text = expressionTextBox.Text.Remove(expressionTextBox.Text.Length - 1); break;
                     case "CE": expressionTextBox.Text = ""; break;
                     default: Number = value; expressionTextBox.Text += Number; break;
