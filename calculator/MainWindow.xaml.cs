@@ -33,6 +33,7 @@ namespace calculator
         }
         private bool comm { get; set; }
         private bool oper { get; set; }
+        private List<string> HistoryOper = new List<string>();
         private string Number = "";
         internal string number
         {
@@ -43,7 +44,6 @@ namespace calculator
             }
             set
             {
-                //unicode is better
                 if (oper == true && (value == "*" || value == "/" || value == "-" || value == "+")) value = "";
                 if (value == "*" || value == "/" || value == "-" || value == "+") oper = true;
 
@@ -92,8 +92,17 @@ namespace calculator
             operation = ((Button)sender).Content.ToString()!;
 
 
-            Standart standart = new Standart(new StringBuilder(expressionTextBox.Text), Operation, out string result);
-            expressionTextBox.Text = result;       
+            Standart standart = new Standart(new StringBuilder(expressionTextBox.Text), Operation, out string? result,out List<string> historyOper);
+            expressionTextBox.Text = result;     
+            HistoryOper = historyOper;
+            historyEx.Document.Blocks.Clear();
+            historyEx.AppendText(String.Join($"{Environment.NewLine}", HistoryOper));
+        }
+
+        private void cButton_Click(object sender, RoutedEventArgs e)
+        {
+            historyEx.Document.Blocks.Clear();
+            IOperation.historyOper.Clear();
         }
     }
 }

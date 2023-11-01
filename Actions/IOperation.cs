@@ -8,9 +8,11 @@ namespace Actions
 {
     public interface IOperation
     {
-        public static string result { get; internal set; }
+        public static string? result { get; internal set; }
         public static char[]? Operators { get; internal set; }
-        public static string FirstNumber { get; internal set; }
-        public static string SecondNumber { get; internal set; }
+        public static string? FirstNumber { get; internal set; }
+        public static string? SecondNumber { get; internal set; }
+
+        public static List<string?> historyOper = new List<string?>();
     }
 }

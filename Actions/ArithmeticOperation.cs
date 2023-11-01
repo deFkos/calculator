@@ -7,9 +7,7 @@ using System.Text.RegularExpressions;
 namespace Actions
 {
     internal class ArithmeticOperation : IOperation
-    {
-        public List<string> historyOper = new List<string>();
-
+    {     
         private char[] Operators { get; set; }
         private double FirstNumber { get; set; }
         private double SecondNumber { get; set; }
@@ -34,22 +32,22 @@ namespace Actions
         private double Arithmetic(double FirstNumber, double SecondNumber, Func<double, double, double> op) => op(FirstNumber, SecondNumber);
         private double Add(double FirstNumber, double SecondNumber)
         {
-            historyOper.Add($"{FirstNumber} + {SecondNumber} = {FirstNumber+SecondNumber}");
+            IOperation.historyOper.Add($"{FirstNumber} + {SecondNumber} = {FirstNumber+SecondNumber}");
             return FirstNumber + SecondNumber;
         }
         private double Take(double FirstNumber, double SecondNumber)
         {
-            historyOper.Add($"{FirstNumber} - {SecondNumber} = {FirstNumber - SecondNumber}");
+            IOperation.historyOper.Add($"{FirstNumber} - {SecondNumber} = {FirstNumber - SecondNumber}");
             return FirstNumber - SecondNumber;
         }
         private double Multiply(double FirstNumber, double SecondNumber)
         {
-            historyOper.Add($"{FirstNumber} * {SecondNumber} = {FirstNumber * SecondNumber}");
+            IOperation.historyOper.Add($"{FirstNumber} * {SecondNumber} = {FirstNumber * SecondNumber}");
             return FirstNumber * SecondNumber;
         }
         private double Division(double FirstNumber, double SecondNumber)
         {
-            historyOper.Add($"{FirstNumber} / {SecondNumber} = {FirstNumber / SecondNumber}");
+            IOperation.historyOper.Add($"{FirstNumber} / {SecondNumber} = {FirstNumber / SecondNumber}");
             return FirstNumber / SecondNumber;
         }
     }
