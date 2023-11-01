@@ -64,6 +64,8 @@ namespace calculator
                     case "←": expressionTextBox.Text = expressionTextBox.Text.Remove(expressionTextBox.Text.Length - 1); break;
                     case "CE": expressionTextBox.Text = ""; break;
                     default: Number = value; expressionTextBox.Text += Number; break;
+
+                        //input = ,*5 - expection
                 }
 
             }

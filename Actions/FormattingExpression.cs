@@ -19,6 +19,8 @@ namespace Actions
             if (IOperation.FirstNumber != "")
             {
                 expression.Replace(IOperation.FirstNumber.ToString(), "", 0, IOperation.FirstNumber.ToString().Length);
+                if (IOperation.FirstNumber == ",")
+                    IOperation.FirstNumber = "0";
             }
             else
                 IOperation.FirstNumber = "0";
@@ -29,6 +31,8 @@ namespace Actions
             if (IOperation.SecondNumber != "")
             {
                 expression.Replace(IOperation.SecondNumber.ToString(), "", 0, IOperation.SecondNumber.ToString().Length);
+                if (IOperation.SecondNumber == ",")
+                    IOperation.SecondNumber = "0";
             }
             else
                 IOperation.SecondNumber = "0";
@@ -36,13 +40,7 @@ namespace Actions
             ArithmeticOperation arithmetic = new ArithmeticOperation();
         }
         /*
-         * ,5 = 0,5 или запрятить первой ставить ,
-         *  надо запретить ввод более 2-ух знаков подряд - посчитать если один знак уже написан
-         *  возможность вывести операции в excel и дать столбикам имя
-         *  стрелочка стирает 1 символ справа 
          *  +/- умножает на -1
-         *  ce стирает textbox
-         *  c чистить историю
          */
     }
 }
