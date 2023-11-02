@@ -69,9 +69,7 @@ namespace calculator
 
             }
         }
-        // [05/0 = 1]
-        // -5-5 = -5
-        // 
+
         private string Operation = "";
         internal string operation
         {
