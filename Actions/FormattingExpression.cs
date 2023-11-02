@@ -24,9 +24,7 @@ namespace Actions
             }
             else
                 IOperation.FirstNumber = "0";
-
             foreach (var i in IOperation.Operators) { expression.Replace(i.ToString(), "", 0, 1); }
-
             IOperation.SecondNumber = String.Join("", expression.ToString().TakeWhile(g => Char.IsDigit(g) || g == ','));
             if (IOperation.SecondNumber != "")
             {
@@ -36,11 +34,7 @@ namespace Actions
             }
             else
                 IOperation.SecondNumber = "0";
-
             ArithmeticOperation arithmetic = new ArithmeticOperation();
         }
-        /*
-         *  +/- умножает на -1
-         */
     }
 }

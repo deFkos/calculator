@@ -44,9 +44,9 @@ namespace calculator
             }
             set
             {
+                string str = expressionTextBox.Text;
                 if (oper == true && (value == "*" || value == "/" || value == "-" || value == "+")) value = "";
                 if (value == "*" || value == "/" || value == "-" || value == "+") oper = true;
-
                 switch (value)
                 {
                     case "," when comm == true: value = ""; break;
@@ -56,21 +56,22 @@ namespace calculator
                     case "-" when oper == true: comm = false; goto default;
                     case "+" when oper == true: comm = false; goto default;
                     case "←" when 
-                    expressionTextBox.Text.Last() == '*' ||
-                    expressionTextBox.Text.Last() == '/' ||
-                    expressionTextBox.Text.Last() == '-' ||
-                    expressionTextBox.Text.Last() == '+'
-                    : oper = false; expressionTextBox.Text = expressionTextBox.Text.Remove(expressionTextBox.Text.Length - 1); break;
-                    case "←": expressionTextBox.Text = expressionTextBox.Text.Remove(expressionTextBox.Text.Length - 1); break;
-                    case "CE": expressionTextBox.Text = ""; break;
-                    default: Number = value; expressionTextBox.Text += Number; break;
-
-                        //input = ,*5 - expection
+                    str.Last() == '*' ||
+                    str.Last() == '/' ||
+                    str.Last() == '-' ||
+                    str.Last() == '+'
+                    : oper = false; str = str.Remove(str.Length - 1); break;
+                    case "←": str = str.Remove(str.Length - 1); break;
+                    case "CE": str = ""; break;
+                    default: Number = value; str += Number; break; 
                 }
+                expressionTextBox.Text = str;
 
             }
         }
-
+        // [05/0 = 1]
+        // -5-5 = -5
+        // 
         private string Operation = "";
         internal string operation
         {

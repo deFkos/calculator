@@ -13,7 +13,6 @@ namespace ActionsOnExpressionStandart
             FormattingExpression frmExp = new FormattingExpression(stringBuilder);
             result = IOperation.result;
             historyOper = IOperation.historyOper!;
-            // [05/0 = 1]
         }
     }
 }
