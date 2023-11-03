@@ -31,8 +31,6 @@ namespace calculator
         {
             InitializeComponent();           
         }
-        private bool comm { get; set; }
-        private bool oper { get; set; }
         private List<string> HistoryOper = new List<string>();
         private string Number = "";
         internal string number
@@ -44,32 +42,22 @@ namespace calculator
             }
             set
             {
-                string str = expressionTextBox.Text;
-                if (oper == true && (value == "*" || value == "/" || value == "-" || value == "+")) value = "";
-                if (value == "*" || value == "/" || value == "-" || value == "+") oper = true;
-                switch (value)
-                {
-                    case "," when comm == true: value = ""; break;
-                    case "," when comm == false: comm = true; goto default;
-                    case "*" when oper == true: comm = false; goto default;
-                    case "/" when oper == true: comm = false; goto default;
-                    case "-" when oper == true: comm = false; goto default;
-                    case "+" when oper == true: comm = false; goto default;
-                    case "←" when 
-                    str.Last() == '*' ||
-                    str.Last() == '/' ||
-                    str.Last() == '-' ||
-                    str.Last() == '+'
-                    : oper = false; str = str.Remove(str.Length - 1); break;
-                    case "←": str = str.Remove(str.Length - 1); break;
-                    case "CE": str = ""; break;
-                    default: Number = value; str += Number; break; 
-                }
-                expressionTextBox.Text = str;
+                FormattingExpression frmExp = new FormattingExpression();
+                (string val,string st) var = frmExp.format(value, expressionTextBox.Text);
+                expressionTextBox.Text = var.st;
+                value = var.val;
 
             }
         }
-
+        //вводим первое значение, прожимается какой-либо оператор,
+        //фиксируем значение, после нажатие "равно" фиксируем второе значение
+        //Abstract?
+        //Отдельный класс, без свойств 
+        //не работает стрелка
+        //05/1 = 5
+        //ошибка если первое отрицательное
+        //каждому оператору свой event
+        //
         private string Operation = "";
         internal string operation
         {
@@ -79,7 +67,8 @@ namespace calculator
             }
             set
             {
-                oper = false;
+                IOperation.oper = false;
+                IOperation.comm = true;
                 Operation = value;               
             }
         }

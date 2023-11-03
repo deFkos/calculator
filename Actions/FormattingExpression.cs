@@ -1,40 +1,42 @@
-﻿using Actions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Actions
 {
     public class FormattingExpression : IOperation
     {
-        public FormattingExpression(StringBuilder expression)
-        {
-            IOperation.Operators = String.Join("", expression.ToString().Where(g => !Char.IsDigit(g) && g != ',')).ToCharArray();
 
-            IOperation.FirstNumber = String.Join("", expression.ToString().TakeWhile(g => Char.IsDigit(g) || g == ','));
-            if (IOperation.FirstNumber != "")
+        public (string, string) format(string value, string str)
+        {
+            if (IOperation.oper == true && (value == "*" || value == "/" || value == "-" || value == "+")) value = "";
+            if (value == "*" || value == "/" || value == "-" || value == "+") IOperation.oper = true;
+            switch (value)
             {
-                expression.Replace(IOperation.FirstNumber.ToString(), "", 0, IOperation.FirstNumber.ToString().Length);
-                if (IOperation.FirstNumber == ",")
-                    IOperation.FirstNumber = "0";
+                case "," when IOperation.comm == true: value = ""; break;
+                case "," when IOperation.comm == false: IOperation.comm = true; goto default;
+                case "*" when IOperation.oper == true: IOperation.comm = false; goto default;
+                case "/" when IOperation.oper == true: IOperation.comm = false; goto default;
+                case "-" when IOperation.oper == true: IOperation.comm = false; goto default;
+                case "+" when IOperation.oper == true: IOperation.comm = false; goto default;
+                case "←" when
+                str.Last() == '*' ||
+                str.Last() == '/' ||
+                str.Last() == '-' ||
+                str.Last() == '+'
+                :
+                    IOperation.oper = false; str = str.Remove(str.Length - 1); break;
+
+                case "←" when str.Remove(str.Length - 1) == ",":
+                    str.Remove(str.Length - 1); IOperation.comm = false; break;
+                case "←":
+                    str.Remove(str.Length - 1); break;
+                case "CE": str = ""; IOperation.comm = false; break;
+                default: str += value; break;
             }
-            else
-                IOperation.FirstNumber = "0";
-            foreach (var i in IOperation.Operators) { expression.Replace(i.ToString(), "", 0, 1); }
-            IOperation.SecondNumber = String.Join("", expression.ToString().TakeWhile(g => Char.IsDigit(g) || g == ','));
-            if (IOperation.SecondNumber != "")
-            {
-                expression.Replace(IOperation.SecondNumber.ToString(), "", 0, IOperation.SecondNumber.ToString().Length);
-                if (IOperation.SecondNumber == ",")
-                    IOperation.SecondNumber = "0";
-            }
-            else
-                IOperation.SecondNumber = "0";
-            ArithmeticOperation arithmetic = new ArithmeticOperation();
+            return (value, str);
         }
     }
 }

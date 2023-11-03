@@ -1,9 +1,11 @@
 using Actions;
+using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using System.Text;
 
 namespace Actions.Test
 {
-    public class Tests
+    public class FormattingExpressionTest
     {
         [SetUp]
         public void Setup()
@@ -11,46 +13,28 @@ namespace Actions.Test
         }
 
         [Test]
-        public void _30and_45_Multiply()
+        public void correct_formatting1()
         {
-            StringBuilder str = new StringBuilder("30*45");
-            string? firstExpected = "30";
-            string? secondExpected = "45";
-            char[]? operExpected = {'*'};
-
-            FormattingExpression frmExp = new FormattingExpression(str);
-
-            Assert.AreEqual(firstExpected, IOperation.FirstNumber);
-            Assert.AreEqual(secondExpected, IOperation.SecondNumber);
-            Assert.AreEqual(operExpected, IOperation.Operators);
-        }
-        [Test]
-        public void _05and_5_Division()
-        {
-            StringBuilder str = new StringBuilder("05/5");
-            string? firstExpected = "0,5";
-            string? secondExpected = "5";
-            char[]? operExpected = { '/' };
-
-            FormattingExpression frmExp = new FormattingExpression(str);
-
-            Assert.AreEqual(firstExpected, IOperation.FirstNumber);
-            Assert.AreEqual(secondExpected, IOperation.SecondNumber);
-            Assert.AreEqual(operExpected, IOperation.Operators);
-        }
-        [Test]
-        public void _5and_5_Take()
-        {
-            StringBuilder str = new StringBuilder("-5-5");
-            string firstExpected = "-5";
-            string secondExpected = "-5";
-            char[] operExpected = { '-' };
-
-            FormattingExpression frmExp = new FormattingExpression(str);
-
-            Assert.AreEqual(firstExpected, IOperation.FirstNumber);
-            Assert.AreEqual(secondExpected, IOperation.SecondNumber);
-            Assert.AreEqual(operExpected, IOperation.Operators);
+            string[] firstValue = { "4", ",", "5", "*", "5" }; 
+            string[] secondValue = { "22", ",","5",","};
+            string str = "";
+            string firstExptected = "4,5*5";
+            string SecondExptected = "22,5";
+            FormattingExpression frmExp = new FormattingExpression();
+            foreach (var item in firstValue)
+            {
+                Debug.WriteLine(item);
+                (string val, string st) var = frmExp.format(item, str);
+                str = var.st;
+            }
+            Assert.AreEqual(firstExptected, str);
+            str = "";
+            foreach (var item in secondValue)
+            {
+                (string val, string st) var = frmExp.format(item,str);
+                str = var.st;
+            }
+            Assert.AreEqual(SecondExptected, str);
         }
     }
 }

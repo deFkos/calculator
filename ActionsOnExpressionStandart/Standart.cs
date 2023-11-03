@@ -10,7 +10,7 @@ namespace ActionsOnExpressionStandart
 
         public Standart(StringBuilder stringBuilder,string operation,out string? result,out List<string> historyOper)
         {
-            FormattingExpression frmExp = new FormattingExpression(stringBuilder);
+            ExpressionSpliting frmExp = new ExpressionSpliting(stringBuilder);
             result = IOperation.result;
             historyOper = IOperation.historyOper!;
         }

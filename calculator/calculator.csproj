@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="button.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ActionsOnExpressionStandart\Standart.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="button.jpg" />
   </ItemGroup>
 
 </Project>

@@ -12,8 +12,6 @@
                             <DropShadowEffect BlurRadius="50" ShadowDepth="10"/>
                         </Setter.Value>
                     </Setter>
-                    <Setter Property="Background" Value="GreenYellow"/>
-                    <Setter Property="SnapsToDevicePixels" Value="True"/>
                 </Trigger>
             </Style.Triggers>
             <Setter Property="Template">
