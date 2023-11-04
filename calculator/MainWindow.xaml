@@ -277,57 +277,57 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Canvas Margin="13,95,0,38" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Left" Width="241">
-            <Button x:Name="arrowButton" Click="Button_Click" Content="←"  Style="{StaticResource MoreButton}" FontSize="12" Width="40" Height="40"  RenderTransformOrigin="0.235,0.48" Canvas.Left="2" Canvas.Top="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button x:Name="arrowButton" Click="arrowButton_Click" Content="←"  Style="{StaticResource MoreButton}" FontSize="12" Width="40" Height="40"  RenderTransformOrigin="0.235,0.48" Canvas.Left="2" Canvas.Top="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="sevenButton" Click="Button_Click" Content="7" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="45" RenderTransformOrigin="0.613,0.434" Canvas.Left="1">
+            <Button x:Name="sevenButton" Click="numbersBtn_Click" Content="7" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="45" RenderTransformOrigin="0.613,0.434" Canvas.Left="1">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="eightButton" Click="Button_Click" Content="8" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="44" Canvas.Top="45">
+            <Button x:Name="eightButton" Click="numbersBtn_Click" Content="8" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="44" Canvas.Top="45">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="nineButton" Click="Button_Click" Content="9"  Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="88" Canvas.Top="44">
+            <Button x:Name="nineButton" Click="numbersBtn_Click" Content="9"  Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="88" Canvas.Top="44">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="fourButton"  Click="Button_Click" Content="4" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.965,0.463" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.Top="91">
+            <Button x:Name="fourButton"  Click="numbersBtn_Click" Content="4" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.965,0.463" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.Top="91">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="fiveButton" Click="Button_Click" Content="5" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.535,0.538" Canvas.Left="45" Canvas.Top="91">
+            <Button x:Name="fiveButton" Click="numbersBtn_Click" Content="5" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.535,0.538" Canvas.Left="45" Canvas.Top="91">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="sixButton" Click="Button_Click" Content="6" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="89" Canvas.Top="92">
+            <Button x:Name="sixButton" Click="numbersBtn_Click" Content="6" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="89" Canvas.Top="92">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="oneButton" Click="Button_Click" Content="1" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.Top="136">
+            <Button x:Name="oneButton" Click="numbersBtn_Click" Content="1" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Canvas.Top="136">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="twoButton" Click="Button_Click" Content="2" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.532,0.487" Canvas.Left="44" Canvas.Top="136">
+            <Button x:Name="twoButton" Click="numbersBtn_Click" Content="2" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.532,0.487" Canvas.Left="44" Canvas.Top="136">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="threeButton" Click="Button_Click" Content="3" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="89" Canvas.Top="135">
+            <Button x:Name="threeButton" Click="numbersBtn_Click" Content="3" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="89" Canvas.Top="135">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="ceButton" Click="Button_Click" Content="CE" Style="{StaticResource MoreButton}"  Width="40" Height="40"  RenderTransformOrigin="0.514,0.32" Canvas.Left="89" Canvas.Top="1" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button x:Name="ceButton" Click="ceButton_Click" Content="CE" Style="{StaticResource MoreButton}"  Width="40" Height="40"  RenderTransformOrigin="0.514,0.32" Canvas.Left="89" Canvas.Top="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
@@ -338,37 +338,37 @@
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="zeroButton" Click="Button_Click" Content="0" Style="{StaticResource MoreButton}" Width="82" Height="37" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="180" Canvas.Left="1">
+            <Button x:Name="zeroButton" Click="numbersBtn_Click" Content="0" Style="{StaticResource MoreButton}" Width="82" Height="37" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="180" Canvas.Left="1">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg" Stretch="UniformToFill"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="commaButton" Click="Button_Click" Content="," Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.512,0.568" Canvas.Left="89" Canvas.Top="178">
+            <Button x:Name="commaButton" Click="commaButton_Click" Content="," Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.512,0.568" Canvas.Left="89" Canvas.Top="178">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="plusMinusButton" Click="Button_Click" Content="+/-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Center" HorizontalAlignment="Left"  Canvas.Left="44" Canvas.Top="1">
+            <Button x:Name="plusMinusButton" Click="plusMinusButton_Click" Content="+/-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Center" HorizontalAlignment="Left"  Canvas.Left="44" Canvas.Top="1">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="divisionButton" Click="Button_Click" Content="/" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.563,0.538" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="45">
+            <Button x:Name="divisionButton" Click="operButton_Click" Content="/" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.563,0.538" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="45">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="multiplyButton" Click="Button_Click" Content="*" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="91">
+            <Button x:Name="multiplyButton" Click="operButton_Click" Content="*" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="91">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="minusButton" Click="Button_Click" Content="-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.548,0.549" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="134">
+            <Button x:Name="minusButton" Click="operButton_Click" Content="-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.548,0.549" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="134">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="plusButton" Click="Button_Click" Content="+" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.515,0.545" Canvas.Left="134" Canvas.Top="177">
+            <Button x:Name="plusButton" Click="operButton_Click" Content="+" Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.515,0.545" Canvas.Left="134" Canvas.Top="177">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
@@ -380,7 +380,7 @@
                 <RichTextBox x:Name="historyEx" Background="Transparent" Foreground="Beige" BorderThickness="0" IsDocumentEnabled="True" IsReadOnly="True"/>
             </Expander>
             <TextBox x:Name="expressionTextBox" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Width="249" Height="20" VerticalAlignment="Top" Canvas.Top="-29" Canvas.Left="-4" IsReadOnly="True"/>
-            <Button x:Name="equlityButton" Click="Button_Click1" Content="=" Style="{StaticResource MoreButton}" Width="64" Height="213" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Top" HorizontalAlignment="Center" Canvas.Left="179" Canvas.Top="5">
+            <Button x:Name="equlityButton" Click="equlityButton_Click" Content="=" Style="{StaticResource MoreButton}" Width="64" Height="213" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Top" HorizontalAlignment="Center" Canvas.Left="179" Canvas.Top="5">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg" Stretch="UniformToFill"/>
                 </Button.Background>

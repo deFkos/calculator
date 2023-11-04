@@ -18,6 +18,7 @@ namespace Actions
             SecondNumber = double.Parse(IOperation.SecondNumber!);
             Operators = IOperation.Operators!;
             double result = 0;
+            //Dictionary?
             foreach (var i in Operators)
             {
                 result =
@@ -26,8 +27,12 @@ namespace Actions
                  : i == '*' ? Arithmetic(FirstNumber, SecondNumber, Multiply)
                  : i == '/' ? Arithmetic(FirstNumber, SecondNumber, Division)
                  : 0;
+            }           
+            if(result.ToString().Contains(','))
+            {
+                IOperation.comm = true;
             }
-            IOperation.result = result.ToString();
+            IOperation.result = result.ToString() != "0" ? result.ToString() : "";
         }
         private double Arithmetic(double FirstNumber, double SecondNumber, Func<double, double, double> op) => op(FirstNumber, SecondNumber);
         private double Add(double FirstNumber, double SecondNumber)
