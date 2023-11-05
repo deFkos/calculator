@@ -8,7 +8,7 @@ namespace Actions
 {
     internal class ArithmeticOperation : IOperation
     {     
-        private char[] Operators { get; set; }
+        private string Operators { get; set; }
         private double FirstNumber { get; set; }
         private double SecondNumber { get; set; }
 
@@ -18,17 +18,14 @@ namespace Actions
             SecondNumber = double.Parse(IOperation.SecondNumber!);
             Operators = IOperation.Operators!;
             double result = 0;
-            //Dictionary?
-            foreach (var i in Operators)
-            {
-                result =
-                   i == '+' ? Arithmetic(FirstNumber, SecondNumber, Add)
-                 : i == '-' ? Arithmetic(FirstNumber, SecondNumber, Take)
-                 : i == '*' ? Arithmetic(FirstNumber, SecondNumber, Multiply)
-                 : i == '/' ? Arithmetic(FirstNumber, SecondNumber, Division)
+
+            result =
+                   Operators == "+" ? Arithmetic(FirstNumber, SecondNumber, Add)
+                 : Operators == "-" ? Arithmetic(FirstNumber, SecondNumber, Take)
+                 : Operators == "*" ? Arithmetic(FirstNumber, SecondNumber, Multiply)
+                 : Operators == "/" ? Arithmetic(FirstNumber, SecondNumber, Division)
                  : 0;
-            }           
-            if(result.ToString().Contains(','))
+            if (result.ToString().Contains(','))
             {
                 IOperation.comm = true;
             }

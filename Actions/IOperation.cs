@@ -11,7 +11,7 @@ namespace Actions
         public static bool comm { get; set; } //temporary property
         public static bool oper { get; set; } //temporary property
         public static string? result { get; internal set; }
-        public static char[]? Operators { get; internal set; }
+        public static string Operators { get; internal set; }
         public static string? FirstNumber { get; internal set; }
         public static string? SecondNumber { get; internal set; }
 

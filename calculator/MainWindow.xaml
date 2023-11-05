@@ -363,7 +363,7 @@
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="minusButton" Click="operButton_Click" Content="-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.548,0.549" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="134">
+            <Button x:Name="minusButton" Click="operButton_Click"  Content="-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.548,0.549" VerticalAlignment="Top" HorizontalAlignment="Left" Canvas.Left="134" Canvas.Top="134">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>

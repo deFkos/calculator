@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,11 +33,13 @@ namespace calculator
             InitializeComponent();           
         }
         private List<string> HistoryOper = new List<string>();
-        //05/1 = 5(если первым числом 0 то ставить запятую, если ставится запятая а перед ней нет числа ставить 0)
-        private string operation { get;set; }
+        
         private void numbersBtn_Click(object sender, RoutedEventArgs e)
         {
-            expressionTextBox.Text += ((Button)sender).Content.ToString()!;
+            //Ограничить колво символов если контент равен 16 занести его в fisrt 
+            // если first и oper не пуст  то ограничить колво символов до 33
+            // и если expression.Text == 0 то добавить запятую
+            expressionTextBox.Text += ((Button)sender).Content.ToString()!;  
         }
 
         private void cButton_Click(object sender, RoutedEventArgs e)
@@ -45,9 +48,20 @@ namespace calculator
             IOperation.historyOper.Clear();
         }
 
+        private string tempfirst = "";
+        private string tempsecond = "";
+        private string tempoper = "";
+        private bool tempminus;
         private void commaButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!IOperation.comm)
+            if (expressionTextBox.Text == "")
+                expressionTextBox.Text += "0";
+
+            GetNumbers(second: expressionTextBox.Text);
+            if (tempsecond == "" && tempfirst != "" && tempoper != "")
+                expressionTextBox.Text += "0";
+
+            if (!IOperation.comm)
             {
                 expressionTextBox.Text += ",";
                 IOperation.comm = true;
@@ -56,18 +70,23 @@ namespace calculator
 
         private void plusMinusButton_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void equlityButton_Click(object sender, RoutedEventArgs e)
         {
             IOperation.oper = false;
 
-            Standart standart = new Standart(new StringBuilder(expressionTextBox.Text), operation, out string? result, out List<string> historyOper);
-            expressionTextBox.Text = result;
-            HistoryOper = historyOper;
-            historyEx.Document.Blocks.Clear();
-            historyEx.AppendText(String.Join($"{Environment.NewLine}", HistoryOper));
+            GetNumbers(second: expressionTextBox.Text);
+            if(tempsecond == "")
+                return;
+           Standart standart = new Standart(tempfirst, tempsecond, tempoper, out string? result, out List<string> historyOper);
+           
+           expressionTextBox.Text = result;
+           
+           HistoryOper = historyOper;
+           historyEx.Document.Blocks.Clear();
+           historyEx.AppendText(String.Join($"{Environment.NewLine}", HistoryOper));
+           tempfirst = result ?? "";tempsecond = ""; tempoper = "";
         }
 
         private void ceButton_Click(object sender, RoutedEventArgs e)
@@ -88,14 +107,49 @@ namespace calculator
 
         private void operButton_Click(object sender, RoutedEventArgs e)
         {
-            string operation = ((Button)sender).Content.ToString()!;
-
+            string operation = ((Button)sender).Content.ToString()!;             
+                //поставить first*(-second) если second пуст и оператор выражения уже есть
+            if(expressionTextBox.Text == "" && operation == "-" )
+            {
+                expressionTextBox.Text += operation;
+                tempminus = true;
+                return;
+            }
+            if (tempfirst != "" && tempoper != "" && operation == "-" && tempminus == true)
+            {
+                GetNumbers(second: expressionTextBox.Text);
+                if(tempsecond == "")
+                {
+                    // поместить в () и сдвинуть select после скобок
+                    expressionTextBox.Text += operation;
+                    tempminus = false;
+                }
+                return;
+            }
             if (!IOperation.oper)
             {
+                GetNumbers(expressionTextBox.Text, operation);
                 expressionTextBox.Text += operation;
                 IOperation.oper = true;
                 IOperation.comm = false;
             }
+        }
+        public void GetNumbers(string first = "", string op = "" , string second = "")
+        {
+            if(first != "")
+                tempfirst = first;
+            if(op != "")
+                tempoper = op;
+            if(tempfirst != "" && tempoper != "" && second != "")
+            {
+                second = expressionTextBox.Text.Replace(tempfirst + tempoper, "");
+                tempsecond = second;
+            }
+        }
+
+        private void minusButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

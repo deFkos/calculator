@@ -8,9 +8,9 @@ namespace ActionsOnExpressionStandart
     public class Standart
     {
 
-        public Standart(StringBuilder stringBuilder,string operation,out string? result,out List<string> historyOper)
+        public Standart(string leftOp, string rightOp,string op,out string? result,out List<string> historyOper)
         {
-            ExpressionSpliting frmExp = new ExpressionSpliting(stringBuilder);
+            ExpressionSpliting frmExp = new ExpressionSpliting(leftOp,rightOp,op);
             result = IOperation.result;
             historyOper = IOperation.historyOper!;
         }
