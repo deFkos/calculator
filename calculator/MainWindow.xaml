@@ -343,12 +343,12 @@
                     <ImageBrush ImageSource="/button.jpg" Stretch="UniformToFill"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="commaButton" Click="commaButton_Click" Content="," Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.512,0.568" Canvas.Left="89" Canvas.Top="178">
+            <Button x:Name="commaButton" Click="commaButton_Click" Content="." Style="{StaticResource MoreButton}" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.512,0.568" Canvas.Left="89" Canvas.Top="178">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="plusMinusButton" Click="plusMinusButton_Click" Content="+/-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Center" HorizontalAlignment="Left"  Canvas.Left="44" Canvas.Top="1">
+            <Button x:Name="additiveInversion" Click="additiveInversion_Click" Content="+/-" Style="{StaticResource MoreButton}" Width="40" Height="40" RenderTransformOrigin="0.543,0.543" VerticalAlignment="Center" HorizontalAlignment="Left"  Canvas.Left="44" Canvas.Top="1">
                 <Button.Background>
                     <ImageBrush ImageSource="/button.jpg"/>
                 </Button.Background>

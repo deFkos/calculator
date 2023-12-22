@@ -46,11 +46,14 @@ namespace calculator
         {
             historyEx.Document.Blocks.Clear();
             IOperation.historyOper.Clear();
+            tempfirst = ""; tempsecond = ""; tempoper = "";
+            expressionTextBox.Text = "";
         }
 
         private string tempfirst = "";
         private string tempsecond = "";
         private string tempoper = "";
+        private bool IsComm;
         private bool tempminus;
         private void commaButton_Click(object sender, RoutedEventArgs e)
         {
@@ -60,16 +63,38 @@ namespace calculator
             GetNumbers(second: expressionTextBox.Text);
             if (tempsecond == "" && tempfirst != "" && tempoper != "")
                 expressionTextBox.Text += "0";
-
-            if (!IOperation.comm)
+            if (!IsComm)
             {
-                expressionTextBox.Text += ",";
-                IOperation.comm = true;
+                expressionTextBox.Text += ".";
+                IsComm = true;
             }
         }
+        //запретить первым + , если первое значение отрицательное то минус в качестве оператора выражения не работает
 
-        private void plusMinusButton_Click(object sender, RoutedEventArgs e)
+        private void additiveInversion_Click(object sender, RoutedEventArgs e)
         {
+            if(tempoper != "")
+            {
+                tempsecond = String.Join("", expressionTextBox.Text.Skip(tempfirst.Length + 1));
+                if(tempsecond != "")
+                {
+                    expressionTextBox.Text = expressionTextBox.Text.Remove(tempfirst.Length + 1, expressionTextBox.Text.Length - (tempfirst.Length + 1));
+                    tempsecond = (double.Parse(tempsecond) * (-1)).ToString();
+                    expressionTextBox.Text += tempsecond;
+                    return;
+                }
+            }
+            if(tempfirst != "")
+            {
+                expressionTextBox.Text = expressionTextBox.Text.Remove(0,tempfirst.Length);
+                tempfirst = (double.Parse(tempfirst) * (-1)).ToString();
+                expressionTextBox.Text = tempfirst  + expressionTextBox.Text;
+                return;
+            }
+            if(expressionTextBox.Text != "")
+            {
+                expressionTextBox.Text = (double.Parse(expressionTextBox.Text) * (-1)).ToString();
+            }
         }
 
         private void equlityButton_Click(object sender, RoutedEventArgs e)
@@ -79,7 +104,7 @@ namespace calculator
             GetNumbers(second: expressionTextBox.Text);
             if(tempsecond == "")
                 return;
-           Standart standart = new Standart(tempfirst, tempsecond, tempoper, out string? result, out List<string> historyOper);
+           Standart standart = new Standart(tempfirst, tempsecond, tempoper, out string? result, out List<string> historyOper, ref IsComm);
            
            expressionTextBox.Text = result;
            
@@ -97,12 +122,15 @@ namespace calculator
         private void arrowButton_Click(object sender, RoutedEventArgs e)
         {
             string str = expressionTextBox.Text;
-            if (str.Last() == ',')
-                IOperation.comm = false;
-            if (str.Last() == '*' || str.Last() == '/' || str.Last() == '-' || str.Last() == '+')
-                IOperation.oper = false;
-            str = str.Remove(str.Length - 1);
-            expressionTextBox.Text = str;
+            if(str != "")
+            {
+                if (str.Last() == '.')
+                    IsComm = false;
+                if (str.Last() == '*' || str.Last() == '/' || str.Last() == '-' || str.Last() == '+')
+                    IOperation.oper = false;
+                str = str.Remove(str.Length - 1);
+                expressionTextBox.Text = str;
+            }
         }
 
         private void operButton_Click(object sender, RoutedEventArgs e)
@@ -128,14 +156,16 @@ namespace calculator
             }
             if (!IOperation.oper)
             {
+
                 GetNumbers(expressionTextBox.Text, operation);
                 expressionTextBox.Text += operation;
                 IOperation.oper = true;
-                IOperation.comm = false;
+                IsComm = false;
             }
         }
         public void GetNumbers(string first = "", string op = "" , string second = "")
         {
+
             if(first != "")
                 tempfirst = first;
             if(op != "")

@@ -13,7 +13,7 @@ namespace Actions
         private double SecondNumber { get; set; }
 
         public ArithmeticOperation()
-        { 
+        {
             FirstNumber = double.Parse(IOperation.FirstNumber!);
             SecondNumber = double.Parse(IOperation.SecondNumber!);
             Operators = IOperation.Operators!;
@@ -25,10 +25,7 @@ namespace Actions
                  : Operators == "*" ? Arithmetic(FirstNumber, SecondNumber, Multiply)
                  : Operators == "/" ? Arithmetic(FirstNumber, SecondNumber, Division)
                  : 0;
-            if (result.ToString().Contains(','))
-            {
-                IOperation.comm = true;
-            }
+
             IOperation.result = result.ToString() != "0" ? result.ToString() : "";
         }
         private double Arithmetic(double FirstNumber, double SecondNumber, Func<double, double, double> op) => op(FirstNumber, SecondNumber);
