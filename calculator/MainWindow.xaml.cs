@@ -36,9 +36,6 @@ namespace calculator
         
         private void numbersBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Ограничить колво символов если контент равен 16 занести его в fisrt 
-            // если first и oper не пуст  то ограничить колво символов до 33
-            // и если expression.Text == 0 то добавить запятую
             expressionTextBox.Text += ((Button)sender).Content.ToString()!;  
         }
 
@@ -69,7 +66,6 @@ namespace calculator
                 IsComm = true;
             }
         }
-        //запретить первым + , если первое значение отрицательное то минус в качестве оператора выражения не работает
 
         private void additiveInversion_Click(object sender, RoutedEventArgs e)
         {
@@ -112,6 +108,7 @@ namespace calculator
            historyEx.Document.Blocks.Clear();
            historyEx.AppendText(String.Join($"{Environment.NewLine}", HistoryOper));
            tempfirst = result ?? "";tempsecond = ""; tempoper = "";
+            tempminus = false;
         }
 
         private void ceButton_Click(object sender, RoutedEventArgs e)
@@ -126,8 +123,12 @@ namespace calculator
             {
                 if (str.Last() == '.')
                     IsComm = false;
-                if (str.Last() == '*' || str.Last() == '/' || str.Last() == '-' || str.Last() == '+')
+                if(str.Last() == '-' && tempminus == true)
+                    tempminus = false;
+                else if (str.Last() == '*' || str.Last() == '/' || str.Last() == '-' || str.Last() == '+')
+                {
                     IOperation.oper = false;
+                }
                 str = str.Remove(str.Length - 1);
                 expressionTextBox.Text = str;
             }
@@ -140,21 +141,20 @@ namespace calculator
             if(expressionTextBox.Text == "" && operation == "-" )
             {
                 expressionTextBox.Text += operation;
-                tempminus = true;
                 return;
             }
-            if (tempfirst != "" && tempoper != "" && operation == "-" && tempminus == true)
+            if (tempfirst != "" && tempoper != "" && operation == "-" && tempminus == false && IOperation.oper == true)
             {
                 GetNumbers(second: expressionTextBox.Text);
                 if(tempsecond == "")
                 {
-                    // поместить в () и сдвинуть select после скобок
+                    // поместить в () и сдвинуть focus после скобок
                     expressionTextBox.Text += operation;
-                    tempminus = false;
+                    tempminus = true;
                 }
                 return;
             }
-            if (!IOperation.oper)
+            if (!IOperation.oper && expressionTextBox.Text != "")
             {
 
                 GetNumbers(expressionTextBox.Text, operation);
@@ -175,11 +175,6 @@ namespace calculator
                 second = expressionTextBox.Text.Replace(tempfirst + tempoper, "");
                 tempsecond = second;
             }
-        }
-
-        private void minusButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
