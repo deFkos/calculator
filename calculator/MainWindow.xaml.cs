@@ -108,6 +108,7 @@ namespace calculator
            historyEx.Document.Blocks.Clear();
            historyEx.AppendText(String.Join($"{Environment.NewLine}", HistoryOper));
            tempfirst = result ?? "";tempsecond = ""; tempoper = "";
+            tempminus = false;
         }
 
         private void ceButton_Click(object sender, RoutedEventArgs e)
@@ -122,8 +123,12 @@ namespace calculator
             {
                 if (str.Last() == '.')
                     IsComm = false;
-                if (str.Last() == '*' || str.Last() == '/' || str.Last() == '-' || str.Last() == '+')
+                if(str.Last() == '-' && tempminus == true)
+                    tempminus = false;
+                else if (str.Last() == '*' || str.Last() == '/' || str.Last() == '-' || str.Last() == '+')
+                {
                     IOperation.oper = false;
+                }
                 str = str.Remove(str.Length - 1);
                 expressionTextBox.Text = str;
             }
@@ -136,17 +141,16 @@ namespace calculator
             if(expressionTextBox.Text == "" && operation == "-" )
             {
                 expressionTextBox.Text += operation;
-                tempminus = true;
                 return;
             }
-            if (tempfirst != "" && tempoper != "" && operation == "-" && tempminus == true)
+            if (tempfirst != "" && tempoper != "" && operation == "-" && tempminus == false && IOperation.oper == true)
             {
                 GetNumbers(second: expressionTextBox.Text);
                 if(tempsecond == "")
                 {
                     // поместить в () и сдвинуть focus после скобок
                     expressionTextBox.Text += operation;
-                    tempminus = false;
+                    tempminus = true;
                 }
                 return;
             }
@@ -155,7 +159,6 @@ namespace calculator
 
                 GetNumbers(expressionTextBox.Text, operation);
                 expressionTextBox.Text += operation;
-                tempminus = true;
                 IOperation.oper = true;
                 IsComm = false;
             }
