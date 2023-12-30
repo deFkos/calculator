@@ -36,9 +36,6 @@ namespace calculator
         
         private void numbersBtn_Click(object sender, RoutedEventArgs e)
         {
-            //Ограничить колво символов если контент равен 16 занести его в fisrt 
-            // если first и oper не пуст  то ограничить колво символов до 33
-            // и если expression.Text == 0 то добавить запятую
             expressionTextBox.Text += ((Button)sender).Content.ToString()!;  
         }
 
@@ -69,7 +66,6 @@ namespace calculator
                 IsComm = true;
             }
         }
-        //запретить первым + , если первое значение отрицательное то минус в качестве оператора выражения не работает
 
         private void additiveInversion_Click(object sender, RoutedEventArgs e)
         {
@@ -148,17 +144,18 @@ namespace calculator
                 GetNumbers(second: expressionTextBox.Text);
                 if(tempsecond == "")
                 {
-                    // поместить в () и сдвинуть select после скобок
+                    // поместить в () и сдвинуть focus после скобок
                     expressionTextBox.Text += operation;
                     tempminus = false;
                 }
                 return;
             }
-            if (!IOperation.oper)
+            if (!IOperation.oper && expressionTextBox.Text != "")
             {
 
                 GetNumbers(expressionTextBox.Text, operation);
                 expressionTextBox.Text += operation;
+                tempminus = true;
                 IOperation.oper = true;
                 IsComm = false;
             }
@@ -175,11 +172,6 @@ namespace calculator
                 second = expressionTextBox.Text.Replace(tempfirst + tempoper, "");
                 tempsecond = second;
             }
-        }
-
-        private void minusButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
