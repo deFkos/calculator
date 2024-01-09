@@ -6,8 +6,8 @@ using System.Text.RegularExpressions;
 
 namespace Actions
 {
-    internal class ArithmeticOperation : IOperation
-    {     
+    public class ArithmeticOperation : IOperation
+    {    
         private string Operators { get; set; }
         private double FirstNumber { get; set; }
         private double SecondNumber { get; set; }

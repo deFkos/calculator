@@ -1,5 +1,5 @@
 ﻿using Actions;
-using ActionsOnExpressionStandart;
+using Standart;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -100,7 +100,7 @@ namespace calculator
             GetNumbers(second: expressionTextBox.Text);
             if(tempsecond == "")
                 return;
-           Standart standart = new Standart(tempfirst, tempsecond, tempoper, out string? result, out List<string> historyOper, ref IsComm);
+            Standart.Standart standart = new Standart.Standart(tempfirst, tempsecond, tempoper, out string? result, out List<string> historyOper, ref IsComm);
            
            expressionTextBox.Text = result;
            

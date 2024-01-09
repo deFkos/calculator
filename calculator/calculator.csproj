@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ActionsOnExpressionStandart\Standart.csproj" />
+    <ProjectReference Include="..\Actions\Actions.csproj" />
+    <ProjectReference Include="..\Mode\Standart.csproj" />
   </ItemGroup>
 
   <ItemGroup>

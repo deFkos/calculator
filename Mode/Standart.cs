@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Actions;
 
-namespace ActionsOnExpressionStandart
+namespace Standart
 {
     public class Standart
     {
